@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20150619132452) do
     t.integer  "user_id"
   end
 
-  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
