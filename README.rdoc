@@ -1,3 +1,5 @@
+#run heroku config set to change bucket to arcanedawn https://devcenter.heroku.com/articles/config-vars
+
 == README
 
 This README would normally document whatever steps are necessary to get the
