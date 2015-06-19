@@ -3,11 +3,13 @@
 <% @posts.each do |post| %>
     <div>
       <%= post.body %>
+      <%= post.created_at %>
  
       <%= link_to 'Show', post %>
+
     </div>
 <% end %>
  
 
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path %><br>
