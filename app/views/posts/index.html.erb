@@ -2,8 +2,8 @@
  
 <% @posts.each do |post| %>
     <div>
-      <h5><%= post.body %></h5>
-      <h6><%= time_ago_in_words(post.created_at) %> by <%= post.user.email %></h6>
+      <h3><%= post.body %></h3>
+      <h5><%= time_ago_in_words(post.created_at) %> ago</h5>
       
  
       <%= link_to 'Show', post %>
@@ -11,6 +11,6 @@
     </div>
 <% end %>
  
-<%= paginate @posts %>
+<%= paginate @posts, :window => 2 %>
 
 <%= link_to 'New Post', new_post_path %><br>

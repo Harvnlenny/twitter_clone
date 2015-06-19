@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader 
+
   has_many :posts
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -20,7 +22,6 @@ class User < ActiveRecord::Base
   end
 
 
-  mount_uploader :avatar, AvatarUploader 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
