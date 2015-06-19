@@ -18,16 +18,18 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+
   end
 
   def create
     @post = Post.create(post_params)
     if @post.save
       flash[:success] = 'Micropost created!'
+      redirect_to root_url
     
     else
       flash[:danger] = @post.errors.full_messages.to_sentence
-  
+      redirect_to root_url
     end
   end
 
@@ -39,7 +41,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :user_id)
     end
 
     def correct_user
