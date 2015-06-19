@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # TODO: show all tweets despite non-signed in user.
   def index
-    @posts = Post.all#page(params[:page]).per(5)
+    @posts = Post.page(params[:page]).per(5)
     respond_to do |format|
       format.html
     end
