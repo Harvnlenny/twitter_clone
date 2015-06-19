@@ -21,7 +21,7 @@ gem 'faker'
 gem 'devise'
 gem 'kaminari'
 gem 'puma'
-gem 'fog-aws'
+gem 'fog'
 gem 'aws-sdk'
 gem 'carrierwave'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
