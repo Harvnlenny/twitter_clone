@@ -1,0 +1,15 @@
+<h1>Posts index page</h1>
+ 
+<% @posts.each do |post| %>
+    <div>
+      <%= post.url %>
+      <%= post.title %>
+      <%= post.description %>
+ 
+      <%= link_to 'Show', post %>
+    </div>
+<% end %>
+ 
+<%= paginate @posts %>
+
+<%= link_to 'New Post', new_post_path %>

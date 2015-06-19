@@ -5,13 +5,12 @@ class PostsController < ApplicationController
 
   # TODO: show all tweets despite non-signed in user.
   def index
-    @posts = current_user.posts.build if signed_in?
-    @feed_items = Tweet.all.paginate(page: params[:page])
+    @posts = Post.page(params[:page]).per(5)
     
   end
 
   def create
-    @post = current_user.posts.build(tweet_params)
+    @post = current_user.posts.build(post_params)
     if @tweet.save
       flash[:success] = 'Micropost created!'
       redirect_to root_url
@@ -29,12 +28,12 @@ class PostsController < ApplicationController
   private
 
     def tweet_params
-      params.require(:tweet).permit(:content)
+      params.require(:post).permit(:content)
     end
 
     def correct_user
-      @tweet = current_user.tweets.find_by(id: params[:id])
-      redirect_to root_url if @tweet.nil?
+      @post = current_user.posts.find_by(id: params[:id])
+      redirect_to root_url if @post.nil?
     end
 
     ## yet another `correct_user` imprementation
