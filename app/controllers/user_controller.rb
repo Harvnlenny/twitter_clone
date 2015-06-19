@@ -1,9 +1,9 @@
 class UserController < ApplicationController
 
-	def new
-		@user = User.new
-		@user.avatar = params[:file]
-	end
+	# def new
+	# 	@user = User.new
+	# 	@user.avatar = params[:file]
+	# end
 
 	# I'm not sure what these do yet. Commenting for now.
 	# @user.save!

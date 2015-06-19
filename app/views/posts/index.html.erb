@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
     <div>
       <h3><%= post.body %></h3>
-      <h5><%= time_ago_in_words(post.created_at) %> ago</h5>
+      <h5><%= time_ago_in_words(post.created_at) %> ago by</h5>
       
  
       <%= link_to 'Show', post %>
