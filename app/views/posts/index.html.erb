@@ -2,14 +2,12 @@
  
 <% @posts.each do |post| %>
     <div>
-      <%= post.url %>
-      <%= post.title %>
-      <%= post.description %>
+      <%= post.body %>
  
       <%= link_to 'Show', post %>
     </div>
 <% end %>
  
-<%= paginate @posts, :window => 2 %>
+
 
 <%= link_to 'New Post', new_post_path %>
