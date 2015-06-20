@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:multipart => true} do |f| %>
   <% if @user.errors.any? %>
     <div id="errors">
       <h2><%= pluralize(@user.errors.count, "error") %> prevented this change from saving:</h2>
@@ -9,12 +9,27 @@
       </ul>
     </div>
   <% end %>
+
+  <%= f.label My Avatar %><br>
+  <%= f.file_field :avatar %><br>
   
   <%= f.label :body %><br>
   <%= f.text_area :body %><br>
   <br>
 
   # more profiley stuff here
+
+<!-- original size
+<%= image_tag(@user.avatar)%>
+
+large size
+<%= image_tag(@user.avatar.large_avatar)%>
+
+medium size
+<%= image_tag(@user.avatar.medium_avatar)%>
+
+small size
+<%= image_tag(@user.avatar.small_avatar)%> -->
   
   <%= f.submit %>
 <% end %>
