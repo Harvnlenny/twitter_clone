@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {registrations: 'devise/registrations'}
   
+  get 'home/index'
+    
   resources :posts
-  resources :relationships
+  devise_for :users, controllers: {registrations: 'devise/registrations'}
+
+  #resources :relationships
 
   # routes for user profile 
   # get 'users/:id' => 'users#index', as: :profile

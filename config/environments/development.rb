@@ -38,7 +38,7 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
   config.action_mailer.default_url_options = {
     host: 'localhost',
-    port: ENV['PORT'] || 5000
+    port: ENV['PORT'] || 3000
   }
 
   # Raises error for missing translations

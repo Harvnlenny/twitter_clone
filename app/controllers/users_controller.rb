@@ -6,13 +6,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # @user.avatar = params[:file]
+    @user.avatar = params[:file]
   end
 
-  # @user.save!
-  # @user.avatar.url # => '/url/to/file.png'
-  # @user.avatar.current_path # => 'path/to/file.png'
-  # @user.avatar_identifier # => 'file.png'
+  @user.save!
+  @user.avatar.url # => '/url/to/file.png'
+  @user.avatar.current_path # => 'path/to/file.png'
+  @user.avatar_identifier # => 'file.png'
 
   def show
     @user = User.find(params[:id])
@@ -22,8 +22,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       redirect_to root_path, notice: "Thank you for signing up!"
-    # else
-    #   render 'new'
+    else
+      render 'new'
     end
   end
 

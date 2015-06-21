@@ -2,10 +2,10 @@
  
 <% @posts.each do |post| %>
     <div>
+    	
+    	<%= image_tag(post.user.avatar) %>
       <h3><%= post.body %></h3>
-      <h5>posted <%= time_ago_in_words(post.created_at) %> ago </h5>
-         <%= post.user_id %>
-      
+      <h5>posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user_id %></h5>
  
       <%= link_to 'Show', post %>
 
