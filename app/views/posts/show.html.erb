@@ -1,5 +1,9 @@
-<%= @post.body %>
+<div>
+	<img class="avatar" src="<%= @post.user.avatar.small_avatar %>"> 
+	<h3><%= @post.body %></h3>
+	<h5>posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.username %></h5>
+	 
+	
+</div>
 
-Posted <%= time_ago_in_words(@post.created_at) %> Ago<br>
 
-  <%= @user_name %> 
