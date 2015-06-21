@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
     <div>
     	
-    	<%= image_tag(post.user.avatar) %>
+    	<%= image_tag(post.user.avatar.small_avatar) %>
       <h3><%= post.body %></h3>
       <h5>posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.username %></h5>
  
