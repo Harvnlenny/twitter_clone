@@ -1,17 +1,14 @@
-<h1>Posts index page</h1>
- 
-<% @posts.each do |post| %>
-    <div>
-    	
-    	<%= image_tag(post.user.avatar.small_avatar) %>
-      <h3><%= post.body %></h3>
-      <h5>posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.username %></h5>
- 
-      <%= link_to 'Show', post %>
+<div class="blog-post"> 
+	<% @posts.each do |post| %>
+	    <div>
+	    	<img class="avatar" src="<%= post.user.avatar.small_avatar %>"> 
+	    	<h3><%= post.body %></h3>
+	      <h5>posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.username %></h5>
+	 
+	      <h6><%= link_to 'Show', post %><h6>
 
-    </div>
-<% end %>
+	    </div>
+	<% end %>
+</div><!-- /.blog-post -->
  
 <%= paginate @posts, :window => 2 %>
-
-<%= link_to 'New Post', new_post_path %><br>

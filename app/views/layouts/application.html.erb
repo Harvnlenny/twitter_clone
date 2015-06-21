@@ -25,15 +25,15 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item"><%= link_to 'Home', posts_path %>
+          <a class="blog-nav-item"><%= link_to 'Home', posts_path %></a>
           <% if user_signed_in? -%>
-            <a class="blog-nav-item" href="#">Profile</a>
-            <a class="blog-nav-item" href="#">Following</a>
-            <a class="blog-nav-item"><%= link_to 'Edit Account', edit_user_registration_path %>
-            <a class="blog-nav-item"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            <a class="blog-nav-item"><%= link_to 'Profile', new_post_path %></a>
+            <a class="blog-nav-item"><%= link_to 'Edit Account', edit_user_registration_path %></a>
+            <a class="blog-nav-item"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></a>
+            <a class="blog-nav-item"><%= link_to 'New Post', new_post_path %></a>
           <% else %>
-            <a class="blog-nav-item"><%= link_to 'Want to join?', new_user_registration_path %>
-            <a class="blog-nav-item"><%= link_to 'Sign in', new_user_session_path %>
+            <a class="blog-nav-item"><%= link_to 'Want to join?', new_user_registration_path %></a>
+            <a class="blog-nav-item"><%= link_to 'Sign in', new_user_session_path %></a>
           <% end -%>
         </nav>
       </div>
