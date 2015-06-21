@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   #before_action :signed_in_user, only: [:create, :destroy]
-  #before_action :correct_user, only: [:destroy]
+  before_action :current_user, only: [:create, :destroy]
 
   # TODO: show all tweets despite non-signed in user.
   def index
@@ -23,8 +23,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.save
-      flash[:success] = 'Micropost created!'
-      redirect_to root_url
+      flash[:success] = 'Chirp created!'
+      redirect_to posts_url
     
     else
       flash[:danger] = @post.errors.full_messages.to_sentence
@@ -33,8 +33,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root_url
+    flash[:success] = 'Chirp deleted!'
+    redirect_to posts_url
   end
 
   private
