@@ -5,7 +5,10 @@ class PostsController < ApplicationController
 
   # TODO: show all tweets despite non-signed in user.
   def index
-    @posts = Post.page(params[:page]).per(5).order('created_at DESC')
+    scope = user_signed_in? ? current_user.feed : Post
+
+    @posts = scope.page(params[:page]).per(5).order('created_at DESC')
+
     respond_to do |format|
       format.html
     end

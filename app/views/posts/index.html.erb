@@ -3,10 +3,7 @@
 	    <div>
 	    	<img class="avatar" src="<%= post.user.avatar.small_avatar %>"> 
 	    	<h3><%= post.body %></h3>
-	      <h5>posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.username %></h5>
-	 
-	      <h6><%= link_to 'Show Post ', post %>    <%= link_to 'User Profile', user_path(post.user.id)%><h6>
-
+	      <h5>posted <%= link_to time_ago_in_words(post.created_at), post %> ago by <%= link_to post.user.username, user_path(post.user.id) %></h5>
 	    </div>
 	<% end %>
 </div><!-- /.blog-post -->

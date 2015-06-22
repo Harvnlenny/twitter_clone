@@ -1,22 +1,21 @@
 Rails.application.routes.draw do
   
-  get 'home/index'
+  # get 'home/index'
   
-  resources :users
   resources :relationships
   resources :posts
   devise_for :users, controllers: {registrations: 'devise/registrations'}
-
+  resources :users, :except => [:index]
+  
 
   get 'home/timeline'
-  #resources :relationships
 
   # routes for user profile 
   # get 'users/:id' => 'users#index', as: :profile
   # patch 'users/:id' => 'users#edit'
   # put 'users/:id' => 'users#edit'
 
-  root to: "home#index"
+  root to: "posts#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

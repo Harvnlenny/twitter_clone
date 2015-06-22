@@ -2,25 +2,16 @@
 <p><%= image_tag(@user.avatar.url) %></p>
 
 <h3> Posts: (<%=@user.posts.count%>)</h3>
-<% if current_user and @user == current_user %>
-  <% @user.posts.each do |post|  %>
-    <div class="link row clearfix">
-      <h2>
-        <%=  post.body %><br>
-        <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> ago</small>
-      </h2>
-    </div>
-  <% end %>
-<% else %>
-  <% @user.posts.each do |post|  %>
-    <div class="link row clearfix">
-      <h2>
-        <%=  post.body %><br>
-        <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> ago</small>
-      </h2>
-    </div>
-  <% end %>
+
+<% @posts.each do |post|  %>
+  <div class="link row clearfix">
+    <h2>
+      <%=  post.body %><br>
+      <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> ago</small>
+    </h2>
+  </div>
 <% end %>
+
 <% if current_user and @user != current_user %>
   <% if current_user.following? @user %>
     <%= form_tag relationship_path, method: :delete do %>
@@ -34,4 +25,4 @@
   <% end %>
 <% end %>
 
-
+<%= paginate @posts %>

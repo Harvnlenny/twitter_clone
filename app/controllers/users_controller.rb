@@ -5,8 +5,9 @@ class UsersController < ApplicationController
     @user.avatar = params[:file]
   end
 
-  def index
-    @users = User.all
+  def destroy
+    sign_out
+    redirect_to root_url
   end
 
   #@user.save!
@@ -17,10 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
-    @relationship = Relationship.where(
-      follower_id: current_user.id,
-      followed_id: @user.id
-    ).first_or_initialize if current_user
+    @posts = @user.posts.page(params[:page]).per(5).order("created_at DESC")
   end
 
   def create
