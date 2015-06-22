@@ -1,0 +1,11 @@
+<div>
+  <img class="avatar" src="<%= @post.user.avatar.small_avatar %>"> 
+  <h3><%= @post.body %></h3>
+  <h5>posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.username %></h5>
+   
+  <% if @post.user == current_user %>
+  <h6><%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } do %>
+  Delete</h6>
+  <% end %>
+  <% end %>
+</div>
