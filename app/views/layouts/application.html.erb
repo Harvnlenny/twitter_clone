@@ -20,7 +20,7 @@
         <nav class="blog-nav">
           <a class="blog-nav-item"><%= link_to 'Home', posts_path %></a>
           <% if user_signed_in? -%>
-            <a class="blog-nav-item"><%= link_to 'Profile', new_post_path %></a>
+            <a class="blog-nav-item"><%= link_to 'Profile', user_path(current_user) %></a>
             <a class="blog-nav-item"><%= link_to 'Edit Account', edit_user_registration_path %></a>
             <a class="blog-nav-item"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></a>
             <a class="blog-nav-item"><%= link_to 'New Post', new_post_path %></a>

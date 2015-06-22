@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   get 'home/index'
-    
+  
+  resources :users
+  resources :relationships
   resources :posts
   devise_for :users, controllers: {registrations: 'devise/registrations'}
 

@@ -1,15 +1,22 @@
 class RelationshipsController < ApplicationController
-  before_action :signed_in_user
-
   def create
-    @user = User.find(params[:relationship][:followed_id])
-    current_user.follow!(@user)
-    redirect_to @user
+    @relationship = Relationship.new
+    @relationship.followed_id = params[:followed_id]
+    @relationship.follower_id = current_user.id
+   
+    if @relationship.save
+      redirect_to posts_path
+            # redirect_to User.find params[:followed_id]
+    else
+      flash[:error] = "Couldn't Follow"
+      redirect_to root_url
+    end
+
   end
 
   def destroy
-    @user = Relationship.find(params[:id]).followed
-    current_user.unfollow!(@user)
-    redirect_to @user
+    @relationship = Relationship.find(params[:id])
+    @relationship.destroy
+    redirect_to posts_path
   end
 end

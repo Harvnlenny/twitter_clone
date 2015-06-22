@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :posts
   
+  def feed
+    Post.from_users_followed_by(self)
+  end
+  
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
   end

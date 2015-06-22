@@ -1,8 +1,9 @@
 <h1><%=@user.username  %>'s Profile Page</h1>
 <p><%= image_tag(@user.avatar.url) %></p>
-
-<h3> Posts: (<%=@user.posts.count%>)</h3>
-<% @user.posts.each do |post|  %>
+<%= link_to 'Follow this user', root_path, notice: "You are now
+following this user" %>
+<h3> Posts: (<%=@posts.count%>)</h3>
+<% @posts.each do |post|  %>
     <div class="link row clearfix">
       <h2>
         <%=  post.body %><br>
@@ -10,16 +11,7 @@
       </h2>
     </div>
 <%end %>
-<% if current_user.following? @user %>
-  <%= form_tag relationship_path, method: :delete do %>
-    <%= submit_tag "Unfollow" %>
-  <% end %>
-<% else %>
-  <%= form_for @relationship do %>
-    <%= hidden_field_tag :followed_id, @user.id %>
-    <%= submit_tag "Follow" %>
-  <% end %>
-<% end %>
+
 
 
 # show.html.erb

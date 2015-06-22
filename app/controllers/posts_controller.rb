@@ -50,6 +50,8 @@ class PostsController < ApplicationController
       redirect_to root_url if @post.nil?
     end
 
+    
+
     ## yet another `correct_user` imprementation
     # def correct_user
     #   @micropost = current_user.posts.find(params[:id])
