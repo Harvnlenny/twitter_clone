@@ -12,7 +12,7 @@
   u.email = Faker::Internet.email(u.name)
   u.password = Faker::Internet.password(8)
   u.password_confirmation = u.password
-  u.avatar = Faker::Avatar.image
+  u.remote_avatar_url = Faker::Avatar.image
   u.save
 end
 
