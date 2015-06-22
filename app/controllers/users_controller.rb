@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post = Post.new
     @posts = @user.posts.page(params[:page]).per(5).order("created_at DESC")
+    @relationship = Relationship.where(
+      follower_id: current_user.id,
+      followed_id: @user.id
+    ).first_or_initialize if current_user
   end
 
   def create
